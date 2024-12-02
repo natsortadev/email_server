@@ -12,13 +12,39 @@ print('''
          ███ ███    ███   ███        ███  ███   ███   ███   ███          ███    ███ 
    ▄█    ███ ███    ███   ███        ███  ███   ███   ███   ███          ███    ███ 
  ▄████████▀  ████████▀   ▄████▀      █▀    ▀█   ███   █▀   ▄████▀        ███    █▀  
-	\n
       ''')
 print("Bem-vindo(a) ao serviço de emails Sumpimpa.net!")
 
+def chooseServer():
+    serverOp = input("Qual servidor de email gostaria de utilizar?\n[1] - Gmail\n[2] - Yahoo\n> ")
+    if int(serverOp) == 1:
+        mailserver = 'smtp.gmail.com'
+    elif int(serverOp) == 2:
+        mailserver = 'smtp.mail.yahoo.com'
+    else:
+        print("Inserção inválida.\n")
+        mailserver = chooseServer()
+    return mailserver
+
+op = input("Gostaria de usar o serviço Ethereal para enviar sua mensagem ou seu próprio email pessoal?\n[1] - Usar email padrão\n[2] - Usar email pessoal\n> ")
+loop = True
+
 # Credentials
-sender = username = input("Digite seu email:\n> ")
-password = input("Insira a senha de app associada ao email inserido previamente:\n(Siga o tutorial para obter sua senha de app: https://support.google.com/accounts/answer/185833?hl=pt-BR)\n> ") 
+while (loop):
+    if int(op) == 1:
+        sender = username = "theron.schimmel@ethereal.email"
+        password = "3QUZbwtQv91gzZTmje"
+        mailserver = 'smtp.ethereal.email'
+        loop = False
+    elif int(op) == 2:
+        # Choose a mail server (e.g. Google mail server) and call it mailserver
+        mailserver = chooseServer()
+        
+        sender = username = input("Digite seu email:\n> ")
+        password = input("Insira a senha de app associada ao email inserido previamente:\n(Siga o tutorial para obter sua senha de app: https://support.google.com/accounts/answer/185833?hl=pt-BR)\n> ") 
+        loop = False
+    else:
+        op = input("Inserção inválida.\nGostaria de usar o email padrão do serviço para enviar sua mensagem ou seu próprio email pessoal?\n[1] - Usar email padrão\n[2] - Usar email pessoal\n> ")
 
 receiver = input("Digite o email do destinatário:\n> ")
 subject = input("Assunto:\n> ")
@@ -33,9 +59,6 @@ msg = (
     f"{body}\r\n"
 )
 endmsg = '\r\n.\r\n'
-
-# Choose a mail server (e.g. Google mail server) and call it mailserver
-mailserver = 'smtp.gmail.com'
 
 # Create socket called clientSocket and establish a TCP connection with mailserver
 clientSocket = socket(AF_INET, SOCK_STREAM)
@@ -92,7 +115,7 @@ secureSocket.send(mailfrom.encode())
 recv3d = secureSocket.recv(1024).decode()
 print(recv3d)
 if recv3d[:3] != '250':
-    print('250 reply not received from server.')
+    print('250 reply not received from server.') ## aaa
     
 rcptto = f"RCPT TO: <{receiver}>\r\n"
 secureSocket.send(rcptto.encode())
