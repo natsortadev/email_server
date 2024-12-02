@@ -10,7 +10,3 @@ A Python program that allows you to send emails through the terminal.
   ```
   git clone https://github.com/nat-thunder/readme-template.git
   ```
-
-## ✅ TO-DOs
-  - Handle errors (inadequate app password, error upon connection with the server, blank fields, etc.)
-  - Add more email client options (Yahoo, etc.)
