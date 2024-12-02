@@ -22,6 +22,7 @@ loop = True
 while (loop):
     if int(op) == 1:
         # Use as credenciais abaixo para acessar a caixa de entrada e saída do serviço de email Ethereal https://ethereal.email/messages
+        # Os email enviados com Ethereal não serão recebidos por outros emails; ele somente testa os passos de conexão. Se tudo tiver dado certo, o email enviado aparecerá na caixa de entrada e saída do serviço de email Ethereal
         sender = username = "theron.schimmel@ethereal.email"
         password = "3QUZbwtQv91gzZTmje"
         mailserver = 'smtp.ethereal.email'
