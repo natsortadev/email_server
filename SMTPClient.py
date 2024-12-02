@@ -18,7 +18,7 @@ print("Bem-vindo(a) ao serviço de emails Sumpimpa.net!")
 
 # Credentials
 sender = username = input("Digite seu email:\n> ")
-password = input("Insira a senha de app associada ao email inserido previamente:\n> ") 
+password = input("Insira a senha de acesso associada ao email inserido previamente:\n(Siga o tutorial para obter sua senha de acesso: https://safety.google/intl/pt-BR_br/authentication/passkey/)\n> ") 
 
 receiver = input("Digite o email do destinatário:\n> ")
 subject = input("Assunto:\n> ")
